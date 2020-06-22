@@ -6,6 +6,17 @@ import { Card } from 'react-native-elements';
 import { DISHES } from '../shared/dishes';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => {
+    return {
+      dishes: state.dishes,
+      comments: state.comments,
+      promotions: state.promotions,
+      leaders: state.leaders
+    }
+  }
 
 function RenderItem(props) {
     
@@ -16,7 +27,7 @@ function RenderItem(props) {
                 <Card
                     featuredTitle={item.name}
                     featuredSubtitle={item.designation}
-                    image={require('./images/uthappizza.png')}>
+                    image={{uri: baseUrl + item.image}}>
                     <Text
                         style={{margin: 10}}>
                         {item.description}</Text>
@@ -47,12 +58,12 @@ class Home extends Component {
         
         return(
             <ScrollView>
-                <RenderItem item={this.state.dishes.filter((dish) => dish.featured)[0]} />
-                <RenderItem item={this.state.promotions.filter((promo) => promo.featured)[0]} />
-                <RenderItem item={this.state.leaders.filter((leader) => leader.featured)[0]} />
+                <RenderItem item={this.props.dishes.dishes.filter((dish) => dish.featured)[0]} />
+                <RenderItem item={this.props.promotions.promotions.filter((promo) => promo.featured)[0]} />
+                <RenderItem item={this.props.leaders.leaders.filter((leader) => leader.featured)[0]} />
             </ScrollView>
         );
     }
 }
 
-export default Home;
+export default connect(mapStateToProps)(Home);
