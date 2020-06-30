@@ -147,6 +147,16 @@ class RegisterTab extends Component {
         }
 
     }
+    getImageFromGallery = async () => {
+        let selectImage = await ImagePicker.launchImageLibraryAsync({
+            allowsEditing: true,
+            aspect: [4, 3],
+        });
+        if (!selectImage.cancelled) {
+            console.log(selectImage);
+            this.processImage(selectImage.uri);
+        }
+    }
 
     processImage = async (imageUri) => {
         let processedImage = await ImageManipulator.manipulateAsync(
@@ -175,19 +185,9 @@ class RegisterTab extends Component {
 
     handleRegister() {
         console.log(JSON.stringify(this.state));
-        if (this.state.remember){
-            SecureStore.setItemAsync('userinfo', JSON.stringify({username: this.state.username, 
-                password: this.state.password,
-                firstname: userinfo.firstname,
-                lastname: userinfo.lastname,
-                email: userinfo.email,
-                imageUrl:userinfo.imageUrl
-            }))
+        if (this.state.remember)
+            SecureStore.setItemAsync('userinfo', JSON.stringify({ username: this.state.username, password: this.state.password }))
                 .catch((error) => console.log('Could not save user info', error));
-        }
-        else{
-            SecureStore.deleteItemAsync("userinfo")
-        }
     }
     componentDidMount() {
         SecureStore.getItemAsync('userinfo')
@@ -220,6 +220,10 @@ class RegisterTab extends Component {
                         title="Camera"
                         onPress={this.getImageFromCamera}
                         />
+                        <Button
+                        title="Gallery"
+                        onPress={this.getImageFromGallery}
+                      />
                 </View>
                 <Input
                     placeholder="Username"
