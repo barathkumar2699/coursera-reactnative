@@ -280,7 +280,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.food.confusion.confusion";
 				PRODUCT_NAME = confusion;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -299,7 +299,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.food.confusion.confusion";
 				PRODUCT_NAME = confusion;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -355,6 +355,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.food.confusion.confusion";
+				PRODUCT_NAME = confusion;
 			};
 			name = Debug;
 		};
@@ -401,6 +403,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.food.confusion.confusion";
+				PRODUCT_NAME = confusion;
 			};
 			name = Release;
 		};
